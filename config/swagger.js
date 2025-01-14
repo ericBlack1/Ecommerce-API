@@ -7,7 +7,7 @@ const options = {
         info: {
             title: 'E-commerce Backend API',
             version: '1.0.0',
-            description: 'API documentation for the e-commerce backend with Google Authenticator-based 2FA',
+            description: 'API documentation for the e-commerce backend',
         },
         servers: [
             {
@@ -15,9 +15,19 @@ const options = {
                 description: 'Development server',
             },
         ],
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [{ bearerAuth: [] }],
     },
     apis: ['./routes/*.js'],
-};
+};  
 
 const swaggerSpec = swaggerJsdoc(options);
 
