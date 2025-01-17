@@ -15,7 +15,6 @@ const options = {
                 description: 'Development server',
             },
         ],
-        components
     },
     apis: ['./routes/*.js'],
 };  
