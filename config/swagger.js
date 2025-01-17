@@ -15,10 +15,7 @@ const options = {
                 description: 'Development server',
             },
         ],
-        components: {
-            securitySchemes: {
-                bearerAuth: {
-           
+        components
     },
     apis: ['./routes/*.js'],
 };  
