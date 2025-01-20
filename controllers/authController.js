@@ -5,9 +5,20 @@ const { generateSecret, verifyToken } = require('../utils/googleAuthenticator');
 
 exports.register = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.createUser(email, password);
-  res.status(201).json({ message: 'User registered', user });
+
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' });
+  }
+
+  try {
+    const user = await User.createUser(email, password);
+    res.status(201).json({ message: 'User registered successfully', user });
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 };
+
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;

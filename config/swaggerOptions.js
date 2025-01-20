@@ -1,17 +1,23 @@
-const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerJsdoc = require('swagger-jsdoc');
 
 const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: 'E-Commerce API',
-      version: '1.0.0',
-      description: 'API documentation for the E-Commerce platform',
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'E-commerce Backend API',
+            version: '1.0.0',
+            description: 'API documentation for the e-commerce backend',
+        },
+        servers: [
+            {
+                url: 'http://localhost:5000',
+                description: 'Development server',
+            },
+        ],
     },
-    basePath: '/',
-  },
-  apis: ['./src/routes/*.js'],
-};
+    apis: ['./routes/*.js'],
+};  
 
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
-module.exports = swaggerDocs;
+module.exports = swaggerSpec;
